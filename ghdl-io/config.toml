@@ -1,0 +1,70 @@
+baseURL = "http://1138-4EB.github.io/ghdl"
+languageCode = "en-gb"
+title = "GHDL"
+theme = "ghdl-io-theme"
+enableGitInfo = true
+pluralizeListTitles = false
+
+[params]
+  # General information
+  author = "Tristan Gingold"
+  description = "where VHDL meets gcc"
+  version = "Dunoon Edition"
+  copyright = 'Copyright © 2015-2017 , [Tristan Gingold](https://github.com/tgingold) and [contributors](http://ghdl.readthedocs.io/en/latest/licenses.html#list-of-contributors)'
+
+  # Repository
+	repo_url = "https://github.com/1138-4EB/ghdl"
+#  version = "v0.35"
+#	logo = "images/logo.png"
+#
+#  # Custom assets
+#  custom_css = []
+#  custom_js  = []
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
+
+[[menu.home]]
+	name   = "About"
+	url    = "about/"
+  pre  = "About GHDL"
+	weight = 1
+
+[[menu.home]]
+	name   = "Get"
+	url    = "getting/"
+  pre  = "Getting GHDL"
+	weight = 2
+
+[[menu.home]]
+  name   = "Contribute"
+  url    = "contribute/"
+  pre  = "Get involved in GHDL development"
+  weight = 3
+
+[[menu.home]]
+  name   = "Docs"
+  url    = "doc/"
+  pre  = "Documentation"
+  weight = 4
+
+[[menu.home]]
+  name   = "Guides"
+  url    = "guides/"
+  pre  = "Guides, tutorials, how-tos..."
+  weight = 5
+
+[[menu.home]]
+  name   = "IDE"
+  url    = "ides/"
+  pre  = "Integrated Development Environments"
+  weight = 6
+
+[[menu.home]]
+  name   = "FAQ"
+  url    = "faqs/"
+  pre  = "Frequently Asked Questions"
+  weight = 7

@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <div>LIST</div>
+  {{ with .Content }}{{.}}{{end}}
+  {{ with .Data.Pages }}
+    <ul class="bt mv4">
+    {{ range . }}
+      {{ .Render "summary"}}
+    {{ end }}
+    </ul>
+  {{end}}
+{{ end }}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ with $.Site.LanguageCode }}{{ . }}{{ else }}en-gb{{ end }}">
+  <head>
+    {{ partial "head.html" }}
+  </head>
+  <body class="ma0 sans-serif bg-primary-color-light{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+    {{ "<!-- This is the baseof layout //-->" | safeHTML }}
+
+    <div class="bg-black-90 w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+      {{ block "header" . }}{{ partial "header.html" . }}{{end}}
+    </div>
+    <div class="flex">
+      <div class="mw5 pa3 ma0">
+        {{ block "sidebar" . }}{{ partial "sidebar.html" . }}{{ end }}
+      </div>
+      <main role="main" class="outline w-100 pa0 ma0">
+        {{ block "main_header" . }}{{ partial "main_header.html" . }}{{ end }}
+        <div class="w-100 pa3 ma0">
+        {{ block "main" . }}{{ end }}
+        </div>
+      </main>
+    </div>
+    <div class="outline w-100 ph2 pv3 mt0">
+      {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+    </div>
+
+  </body>
+</html>

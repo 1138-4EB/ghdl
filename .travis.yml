@@ -22,7 +22,7 @@ deploy:
     script: ./dist/linux/deploy2dockerhub.sh "$IMAGE" "$TRAVIS_COMMIT_MESSAGE"
     on:
       repo: 1138-4EB/ghdl
-      branch: master
+      branch: rtd2travis
   - &deploy-releases
     provider: releases
     skip_cleanup: true
@@ -56,8 +56,11 @@ env:
     - secure: "kIA09oCHzoHMK4LsfwcaVaMuoAFpd1M+M8tW3b9Rvki/hEB3y46edlb88lWVM7RgkNoCaIPwAZD7Wf3Xiq9Y7wWmqRsWQNRaorC0xke5SuyMwCSQSNo9S5jAu9SM5uxENCH9yucJl/vm2juYitJCHyYYMb4x17fy3sHKULNJ+JBqnrgOuTBYM1JOIkJVO1P5LqEXmqTtr6KgQgiTMtlvnM7hxjapgoyM3J1376f+Kfky0hUoDD7LFLXu8yQCn5Fnar8wR3czK6Qknafmckt5yWJxGOZobMDfKwOdA0fpU+XiArNQ/1NM80fGXq4YOGK5ycVQkO2ACxDqHYfQRYLlIfrUGp75BoXWwN6O1GoOrFcF7ZIoSaLoK3hZdvzRFT7dpUQFlosn00Y7VzqbosQM5QS5TBBqO+DExnkb399OpXI7o0lrlr232kjAeYqEb6N1n3M9BpiNW9Je4plJa/RDKwYsnC8Qak4G08PVTe6V711W1UtqMPd6efWFYTNvRW9tjO3v1lFGaGJ99ABP0AYLIDYWV3zfgvp0UzQOKFdWJj7dMQxdLMQ/bIETKn8P7NFjOWic4pgtp3zekZCL27blhc0fyHm62HUiVLT+VGFOI/nyclzBIZStSVuxPj2LvmAIiMnUNmWwds1ZqIZ21eiNykkn+k52ddTRHXIh2fhvWfg=" #P
 
 stages:
-  - create ghdl/build and ghdl/run images
-  - test
+#  - create ghdl/build and ghdl/run images
+#  - test
+#  - collect ghdl/pkg images and build ghdl/pkg:all
+#  - extended images
+  - build and update gh-pages
 
 jobs:
   include:
@@ -83,3 +86,13 @@ jobs:
         - <<: *deploy-releases
 #    - <<: *osx
 #      osx_image: xcode8.3
+    - stage: build and update gh-pages
+      script: ./dist/linux/gh-pages.sh
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: DEPLOY=true ./dist/linux/gh-pages.sh
+          on:
+            repo: 1138-4EB/ghdl
+            all_branches: true
+            branch: master

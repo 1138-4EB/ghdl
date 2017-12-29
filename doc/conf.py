@@ -18,17 +18,18 @@ import shlex
 import re
 import subprocess
 
+from os.path import abspath, isfile
+
 # http://docs.readthedocs.io/en/latest/getting_started.html#in-markdown
 from recommonmark.parser import CommonMarkParser
 source_parsers = { '.md': CommonMarkParser, }
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('.'))
-# sys.path.insert(0, os.path.abspath('../py'))
-sys.path.insert(0, os.path.abspath('_extensions'))
-# sys.path.insert(0, os.path.abspath('_themes/sphinx_rtd_theme'))
+# documentation root, use [os.path.]abspath to make it absolute, like shown here.
+sys.path.insert(0, abspath('.'))
+# sys.path.insert(0, abspath('../py'))
+sys.path.insert(0, abspath('_extensions'))
 
 # -- General configuration ------------------------------------------------
 
@@ -54,7 +55,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates', '_themes']
+#templates_path = ['_templates', '_themes']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -149,7 +150,7 @@ except Exception as ex:
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #html_theme = 'alabaster'
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_btd_theme"
 # Override default css to get a larger width for ReadTheDoc build
 html_context = {
     'css_files': [
@@ -157,15 +158,39 @@ html_context = {
         'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
         '_static/theme_overrides.css',
     ],
+    'display_github': True,
+    'github_user': 'ghdl',
+    'github_repo': 'ghdl',
+    'github_version': 'master/doc/',
+    'READTHEDOCS': True,
+    'versions': [ ['builders', '../builders'], ['v0.35', 'v0.35'], ['v0.34', 'v0.34'] ]
 }
 
+# Add display_github and VERSIONING data
+if isfile('context.json'):
+   from json import loads
+   data = loads(open('context.json').read())
+   html_context.update(data)
+
 # Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
+# further. For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+#html_theme_options = {
+#    'typekit_id': hiw1hhg,
+#    'canonical_url':
+#    'analytics_id':
+#    'collapse_navigation': False
+#    'sticky_navigation': False
+#    'navigation_depth': 4
+#    'includehidden': True
+#    'logo_only':
+#    'display_version': True
+#    'prev_next_buttons_location': bottom
+#}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
+html_theme_path = ["."]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -195,7 +220,7 @@ html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-#html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
