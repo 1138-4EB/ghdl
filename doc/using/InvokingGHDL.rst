@@ -191,7 +191,7 @@ This command works like the make command (see :option:`-m`), but only a makefile
 .. index:: --gen-depends command
 
 Generate dependency file command [``--gen-depends``]
--------------------------
+--------------------------------------------------------
 
 .. option:: --gen-depends <[options] primary [secondary]>
 

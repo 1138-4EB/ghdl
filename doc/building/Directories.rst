@@ -36,7 +36,7 @@ Directory Structure
   `Read the docs <http://readthedocs.org>`_ (RTD) is used to automatically build
   and deploy this site and/or PDF you are reading.
 
-* ``testsuite``: see section :ref:`test_suites`.
+* ``testsuite``: test suites.
 
 * `.yml` configuration files for CI environments (``readthedocs``,
   ``travis`` and ``appveyor``) and `ignore` files for source control
