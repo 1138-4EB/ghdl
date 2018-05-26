@@ -1,0 +1,18 @@
+os: linux
+services: docker
+language: minimal
+install: skip
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+script: ./travis/gh-pages.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: DEPLOY=true ./travis/gh-pages.sh
+    on:
+      repo: 1138-4EB/ghdl-io
+      branch: master

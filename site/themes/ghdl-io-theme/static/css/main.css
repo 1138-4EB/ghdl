@@ -1,0 +1,28 @@
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+#header a,
+#header label[role=button] {
+  color: #ccc;
+}
+
+#sidebar a {
+  color: #000;
+}
+
+#footer {
+  font-size: .65rem;
+}
+
+a {
+  color: #408BC9;
+  font-weight: bold;
+}
+
+label[role=button] {
+  cursor: pointer;
+}
+label[role=button].not-active {
+  cursor: not-allowed;
+}

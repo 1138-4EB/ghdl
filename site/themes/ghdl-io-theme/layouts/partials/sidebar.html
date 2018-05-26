@@ -1,0 +1,28 @@
+<div id="sidebar" class="mw5 pv0 ph2 ma0 overflow-y-auto f7">
+  {{ $home := .Site.Home }}
+  <a href="{{ "/" | relURL }}" class="flex items-center ph0 pv3 w-100 center bb">
+    <img src="{{ "/img/logo.svg" | relURL }}" class="h2 mr1" alt="GHDL">
+    <div class="flex flex-column w-100">
+      <label role="button">{{ .Site.Title }}</label>
+      <label role="button">{{ .Site.Params.Version }}</label>
+    </div>
+  </a>
+  <ul class="list pl0">
+      {{ template "section-tree-nav" $home }}
+  </ul>
+  {{ define "section-tree-nav" }}
+    {{ range .Sections.Reverse}}
+    <li class="lh-copy pv1"> <!--  ba bl-0 bt-0 br-0 b--black-30 -->
+      <a href="{{ .RelPermalink}}">{{ .LinkTitle }}</a>
+      <ul class="list pl2">
+        {{ range .Pages }}
+          <li><a href="{{ .RelPermalink}}">{{ .Title | truncate 50 }}</a></li>
+        {{ end }}
+        <ul class="list pl0">
+          {{ template "section-tree-nav" . }}
+        </ul>
+      </ul>
+    </li>
+    {{ end }}
+  {{ end }}
+</div>

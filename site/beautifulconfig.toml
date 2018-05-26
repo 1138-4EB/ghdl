@@ -1,0 +1,210 @@
+baseurl = "https://1138-4EB.github.io/ghdl"
+languageCode = "en-gb"
+title = "GHDL"
+
+[params]
+  # General information
+  author = "Tristan Gingold"
+  description = "Automate your VHDL design workflow with state-of-the-art, free, lightweight and scalable software"
+  copyright = "Released under GNU GPLv2 and CC-SA-4.0"
+  # Repository
+  provider = "GitHub"
+  repo_url = "https://github.com/tgingold/ghdl"
+#  favicon = "favicon.ico"
+
+[params.palette]
+  primary = "grey"
+  accent  = "cyan"
+
+[params.font]
+  text = "Roboto"
+  code = "Roboto Mono"
+
+[social]
+  github  = "tgingold"
+
+[[menu.main]]
+  name   = "Material"
+  url    = "/"
+  weight = 0
+  pre    = ""
+
+[blackfriday]
+  smartypants = true
+  fractions = true
+  smartDashes = true
+  plainIDAnchors = true
+
+#disablePathToLower = true
+#theme = "beautifulhugo"
+#metaDataFormat = "yaml"
+#pygmentsUseClasses = true
+#pygmentCodeFences = true
+##disqusShortname = "XXX"
+##googleAnalytics = "XXX"
+#
+#[Params]
+#  logo = "img/avatar-icon.png"
+#  favicon = "img/favicon.ico"
+#  subtitle = "Automate your VHDL design workflow with state-of-the-art, free, lightweight and scalable software"
+#  dateFormat = "January 2, 2006"
+#  ghrepo = "https://github.com/tgingold/ghdl/"
+#  rss = true
+#  comments = false
+##  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+#
+##[[Params.bigimg]]
+##  src = "img/triangle.jpg"
+##  desc = "Triangle"
+##[[Params.bigimg]]
+##  src = "img/sphere.jpg"
+##  desc = "Sphere"
+##[[Params.bigimg]]
+##  src = "img/hexagon.jpg"
+##  desc = "Hexagon"
+#
+#[Author]
+#  name = "1138-4EB"
+#  email = "1138-4EB@users.noreply.github.com"
+#  github = "tgingold/ghdl"
+#  #facebook = "username"
+#  #googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+#  #twitter = "username"
+#  #reddit = "username"
+#  #linkedin = "username"
+#  #xing = "username"
+#  #snapchat = "username"
+#  #instagram = "username"
+#  #youtube = "user/username" # or channel/channelname
+#  #soundcloud = "username"
+#  #spotify = "username"
+#  #bandcamp = "username"
+#  #itchio = "username"
+#  #stackoverflow = "users/XXXXXXX/username"
+#  #stackoverflow = "questions/tagged/ghdl"
+#  #wikipedia = "List_of_HDL_simulators"
+
+#baseurl = "https://11384-4EB.github.io/ghdl-tools"
+#languageCode = "en-gb"
+#title = "GHDL tools"
+#theme = "beautifulhugo"
+#pygmentsUseClasses = true
+##disqusShortname = "XXX"
+##googleAnalytics = "XXX"
+#
+#[Params]
+#  logo = "img/avatar-icon.png"
+#  subtitle = "Automate your VHDL design workflow with free, lightweight and scalable software"
+##  favicon = "img/favicon.ico"
+#  commit = "https://github.com/1138-4EB/ghdl-tools/tree/"
+#
+#[Author]
+#  name = "1138-4EB"
+#  email = "1138-4EB@users.noreply.github.com"
+#  github = "1138-4EB"
+#  stackoverflow = "questions/tagged/ghdl"
+#  wikipedia = "List_of_HDL_simulators"
+#  #facebook = "username"
+#  #twitter = "username"
+#  #linkedin = "pub/username/X/YYY/ZZZ"
+#  #soundcloud = "username"
+#
+#[[menu.main]]
+#    name = "Blog"
+#    url = "/"
+#    weight = 1
+#
+#[[menu.main]]
+#    identifier = "ghdl"
+#    name = "GHDL"
+#    url = "/page/ghdl/"
+#    weight = 2
+#
+#[[menu.main]]
+#    identifier = "tools"
+#    name = "Tools"
+#    url = "/page/about/"
+#    weight = 3
+#
+#[[menu.main]]
+#    name = "About"
+#    url = "/page/about/"
+#    weight = 4
+#
+#[[menu.main]]
+#    parent = "tools"
+#    name = "Build scripts"
+#    url = "/page/about/"
+#    weight = 1
+#
+#[[menu.main]]
+#    parent = "tools"
+#    name = "Dockerization"
+#    url = "/page/about/"
+#    weight = 1
+#
+#[[menu.main]]
+#    parent = "tools"
+#    name = "Test suites"
+#    url = "/page/about/"
+#    weight = 2
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Features"
+#    url = "/ghdl/features"
+#    weight = 1
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Download"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.Download"
+#    weight = 2
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Installation"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.Installation"
+#    weight = 3
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "User Guide"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.UserGuide"
+#    weight = 4
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Tutorials"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.Tutorials"
+#    weight = 5
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "VHDL"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.VHDL"
+#    weight = 6
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "FAQ"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.FAQ"
+#    weight = 7
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Report a bug "
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.ReportABug"
+#    weight = 8
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Help Us"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.HelpUs"
+#    weight = 9
+#
+#[[menu.main]]
+#    parent = "ghdl"
+#    name = "Credits"
+#    url = "http://ghdl.free.fr/site/pmwiki.php?n=Main.Credits"
+#    weight = 10

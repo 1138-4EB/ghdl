@@ -1,0 +1,7 @@
+<nav class="center mw8-l flex items-center justify-between f5 b light-silver">
+  <label class="f7 mr2">{{.Date.Format "Jan 2, 2006 at 15:04 (MST)"}}</label>
+  <nav class="flex items-center">
+    <label role="button" class="dim f6" title="Previous">&#9664;</label><a class="dim mh3" href="{{ .RelPermalink}}">{{.Title}}</a> <label role="button" class="dim f6" title="Next">&#9654;</label>
+  </nav>
+  <a role="button" class="v-mid dim mr2" title="Edit on GitHub" target="_blank" href="{{ .Site.Params.repo_url}}/edit/builders/ghdl-io/content{{ .URLPath.URL }}_index.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+</nav>

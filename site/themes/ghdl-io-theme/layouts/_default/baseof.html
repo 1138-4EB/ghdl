@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ with $.Site.LanguageCode }}{{ . }}{{ else }}en-gb{{ end }}">
+  <head>
+    {{ partial "head.html" }}
+  </head>
+  <body class="flex flex-column vh-100 min-vh-100 dt w-100 ma0 georgia bg-near-black">
+      <div id="header" class="flex-shrink-0 w-100 pv3 ph3 light-silver">
+        {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+      </div>
+      {{ block "body" . }}
+        <div class="flex flex-grow-1 justify-center w-100 bg-white overflow-hidden center">
+          {{ block "sidebar" . }}{{ partial "sidebar.html" . }}{{ end }}
+          <main role="main" class="w-100 pa0 ma0 overflow-y-auto overflow-x-auto">
+            <div class="mw8-l flex-grow-1 center ma0 pv0 ph4 tj">
+              {{ block "main" . }}{{ end }}
+            </div>
+          </main>
+        </div>
+      {{end}}
+      <div id="footer" class="flex-shrink-0 w-100 ph2 pv2">
+        {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+      </div>
+  </body>
+  {{ block "js" . }}{{ partial "js.html" . }}{{ end }}
+</html>

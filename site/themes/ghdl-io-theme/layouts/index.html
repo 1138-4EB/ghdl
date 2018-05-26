@@ -1,0 +1,67 @@
+{{ define "header" }}
+<nav class="center mw8-l flex items-center justify-between f5 b light-silver">
+  <div class="flex items-center">
+    <a class="dim" href="{{ "/" | relURL }}"><img src="{{ "/img/logo.svg" | relURL }}" class="h2 dib mr3" alt="GHDL"></a>
+    <nav class="f6 b ttu tracked light-silver">
+      {{ range .Site.Menus.home }}
+        <a class="link dib mr2 dim" href="{{ .URL | relURL }}" title="{{.Pre}}">{{.Name}}</a>
+      {{ end }}
+
+    </nav>
+  </div>
+  <div class="dtc v-mid tr">
+    <a class="dim" href="https://github.com/ghdl"><img src="https://img.shields.io/badge/github-ghdl/ghdl-4183c4.svg?style=flat-square&logo=github"></a>
+    <a class="dim" href="https://github.com/ghdl/ghdl/stargazers"><img src="https://img.shields.io/github/stars/ghdl/ghdl.svg?style=flat-square"></a>
+    <a class="dim" href="https://github.com/ghdl/ghdl/network"><img src="https://img.shields.io/github/forks/ghdl/ghdl.svg?style=flat-square"></a>
+    <a class="dim" href="https://github.com/ghdl/ghdl/watchers"><img src="https://img.shields.io/github/watchers/ghdl/ghdl.svg?style=flat-square"></a>
+  </div>
+</nav>
+{{ end }}
+
+{{ define "body" }}
+<div class="flex flex-grow-1 tc overflow-y-auto">
+  <main role="main" class="center moon-gray mw8-l flex flex-column justify-around pa0 ma0"> <!-- overflow-y-auto h-100 v-mid tc ph4-l-->
+<!--dt w-100 -->
+    <div class="light-gray flex-grow-1 flex-shrink-1 flex flex-column justify-center h5 v-mid">
+      <h1 class="f1 f-6-m f-6-l fw6 tc mv1">GHDL</h1>
+      <h1 class="f4 f1-m f2-l fw6 tc mv0">where VHDL meets gcc</h1>
+    </div>
+    <div class="h4 v-mid tl ph5 lh-copy">{{.Content}}</div>
+    <div id="slideshow" class="slideshow-container pal w-100 w500p-ns center flex flex-column">
+      <!-- mw9 center ph2-ns -->
+      <div class="slide-deck flex-grow-0 w-100 bt"> <!-- cf ph2-ns mt6  -->
+        {{ range .Params.Features }}
+          <div class="slide dn fl w-100 w-third-ns w-50-m pv2 ph3">
+            <div class="h2 mv3 gold">{{ .heading | markdownify }}</div>
+            <div class="h2 mv3">{{ .tagline | markdownify }}</div>
+            <!--<div>{{ .copy | markdownify }}</div>-->
+          </div>
+        {{ end }}
+      </div>
+      <div class="mh0 mt3" style="cursor: default;">
+        <label role="button" id="btn-left"  class="" type="button" onclick="toggleSlides(-1);">&#9664;</label>
+        {{ range $i, $seq :=  (seq (sub (len .Params.Features) 2)) }}
+          <label class="legend">&#9679;</label>
+        {{ end }}
+        <label role="button" id="btn-right" class="" type="button" onclick="toggleSlides(1);">&#9654;</label>
+      </div>
+    </div>
+    <div class="flex-grow-1 w-100"></div>
+    <div class="flex items-center w-100 mb3">
+      {{ range .Params.Notes }}
+      <div class="fl w-100 w-50-ns w-50-m pa2 h-100">
+        <div class="pa3 h-100 flex flex-column justify-between ba b--light-blue">
+          <div class="fles-grow-1 mb2">{{ .text | markdownify }}</div>
+          <div><a class="f6 link dim ba ph3 pv2 mb1 dib" href="{{.target}}">{{.link}}</a></div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+</main>
+</div>
+{{ end }}
+
+{{ define "js" }}
+  {{ partial "js.html" . }}
+  <script src="{{ "js/slides.js" | relURL }}"></script>
+{{ end }}

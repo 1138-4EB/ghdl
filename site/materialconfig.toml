@@ -1,0 +1,100 @@
+baseurl = "https://1138-4EB.github.io/ghdl"
+languageCode = "en-gb"
+title = "GHDL"
+metadataformat = "yaml"
+canonifyurls = true
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[params]
+	# General information
+	author = "Tristan Gingold"
+	description = "Where VHDL meets gcc"
+	copyright = "Released under the GPLv2 and CC-BY-SA-4.0 licenses"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/ghdl/ghdl"
+
+	version = "v0.35"
+	logo = "images/logo.png"
+	favicon = ""
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+    	primary = "grey"
+    	accent  = "teal"
+
+    [params.font]
+    	text = "Ubuntu"
+    	code = "Ubuntu Mono"
+
+
+[social]
+	twitter = ""
+	github  = "tgingold"
+	email   = "hello@email.com"
+
+[[menu.main]]
+	name   = "About GHDL"
+	url    = "about/"
+	weight = 5
+
+[[menu.main]]
+	name   = "Getting GHDL"
+	url    = "getting/"
+	weight = 5
+
+[[menu.main]]
+	name   = "Guides, tutorials, etc."
+	url    = "guides/"
+	weight = 10
+
+[[menu.main]]
+	name   = "Integrated Design Environments"
+	url    = "ides/"
+	weight = 10
+
+[[menu.main]]
+	name   = "Performance"
+	url    = "performance/"
+	weight = 10
+
+[[menu.main]]
+	name   = "Frequently Asked Questions"
+	url    = "faqs/"
+	weight = 10
+
+[[menu.main]]
+	name   = "Roadmap"
+	url    = "roadmap/"
+	weight = 30
+
+[[menu.main]]
+	name   = "Licenses"
+	url    = "licenses/"
+	weight = 40
+
+[[menu.main]]
+	name   = "ToDo"
+	url    = "todo/"
+	weight = 50
+
+[[menu.main]]
+	name   = "Material"
+	url    = "material/"
+	weight = 60
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
