@@ -1,0 +1,92 @@
+\tikzstyle{comment} = [minimum width=5cm, text width=5cm, gray];
+\tikzstyle{tag} = [draw,orange]; %BurntOrange
+\tikzstyle{branch} = [draw,blue]; %OliveGreen
+\tikzstyle{commit} = [draw,fill=white,circle,inner sep=0.125em];
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}[node distance=1cm]
+
+  \node (c0) {$\vdots$};
+  \node[green,commit,above of=c0] (c1) {C0};
+  \node[above of=c1] (c2) {};
+  \node[above of=c2] (c3) {};
+  \node[purple,commit,above of=c3] (c4) {M0};
+  \node[green,commit,above of=c4] (c5) {C1};
+  \node[green,commit,above of=c5] (c6) {C2};
+  \node[green,commit,above of=c6] (c7) {C3};
+  \node[green,commit,above of=c7] (c8) {C4};
+  \node[above of=c8] (c9) {};
+  \node[above of=c9] (c10) {};
+  \node[purple,commit,above of=c10] (c11) {M1};
+  \node[green,commit,above of=c11] (c12) {C5};
+  \node[green,commit,above of=c12] (c13) {C6};
+  \node[above of=c13] (c14) {$\vdots$};
+
+  \node[green,comment,right of=c1,node distance=11.25cm] (m0) {commit msg C0};
+  \node[green,comment,right of=c5,node distance=11.25cm] (m0) {commit msg C1};
+  \node[green,comment,right of=c6,node distance=11.25cm] (m0) {commit msg C2};
+  \node[green,comment,right of=c7,node distance=11.25cm] (m0) {commit msg C3};
+  \node[green,comment,right of=c8,node distance=11.25cm] (m0) {commit msg C4};
+  \node[green,comment,right of=c12,node distance=11.25cm] (m0) {commit msg C5};
+  \node[green,comment,right of=c13,node distance=11.25cm] (m0) {commit msg C6};
+
+  \node[red,commit,left of=c2] (r0) {R0};
+  \node[red,commit,above of=r0] (r1) {R1};
+
+  \node[red,commit,left of=c9] (r2) {R2};
+  \node[red,commit,above of=r2] (r3) {R3};
+
+  \node[pink, commit, left of=c11, node  distance=2cm] (h0) {H0};
+  \node[pink, commit, left of=c12, node  distance=2cm] (h1) {H1};
+
+  \begin{pgfonlayer}{background}
+
+  \draw[->] (r3) -- (h0);
+  \draw[->] (h0) -- (h1);
+
+  \draw[->] (c0) -- (c1);
+
+  \draw[->] (c1) -- (c4);
+  \draw[->] (c4) -- (c5);
+
+  \draw[->] (c1) -- (r0);
+  \draw[->] (r0) -- (r1);
+  \draw[->] (r1) -- (c4);
+
+  \draw[->] (c7) -- (r2);
+  \draw[->] (r2) -- (r3);
+  \draw[->] (r3) -- (c11);
+
+  \node[comment,right of=c3,node distance=5.25cm] (m0) {bump version to v0.1.0};
+  \node[comment,right of=c2,node distance=5.25cm] (m1) {branch to prepare rel-0.1.x};
+  \node[comment,right of=c4,node distance=5.25cm] (m2) {merge rel-0.1.x to master};
+
+  \node[comment,right of=c10,node distance=5.25cm] (m3) {bump version to v0.2.0};
+  \node[comment,right of=c9,node distance=5.25cm] (m4) {branch to prepare rel-0.2.x};
+  \node[comment,right of=c11,node distance=5.25cm] (m5) {merge rel-0.2.x to master};
+
+  \draw[->] (c5) -- (c6);
+  \draw[->] (c6) -- (c7);
+  \draw[->] (c7) -- (c8);
+  \draw[->] (c8) -- (c11);
+  \draw[->] (c11) -- (c12);
+  \draw[->] (c12) -- (c13);
+
+  \node[above of=c14, node distance=2cm,rotate=90] (lmaster) {dev | master};
+  \node[left of=lmaster,node distance=1cm,rotate=90] (lstable) {master | stable};
+  \node[left of=lstable,node distance=1cm,rotate=90] (lhotfixes) {hotfixes};
+
+  \node[tag, right of=c3, node distance=1.5cm] (v0) {v0.1.0};   \draw[-,orange] (v0) -- (r1);
+  \node[tag, right of=c10, node distance=1.5cm] (v1) {v0.2.0}; \draw[-,orange] (v1) -- (r3);
+  \node[tag, right of=c12, node distance=1.5cm] (v2) {v0.2.1}; \draw[-,orange] (v2) -- (h1);
+
+  \node[branch,left of=c13,node distance=4cm] (b0) {master};   \draw[-,blue] (b0) -- (c13);
+  \node[branch,left of=r1,node distance=3cm] (b2) {rel-0.1.x};  \draw[-,blue] (b2) -- (r1);
+  \node[branch,left of=r3,node distance=3cm] (b1) {stable};      \draw[-,blue] (b1) -- (r3);
+  \node[branch,left of=h1,node distance=2cm] (b3) {rel-0.2.x}; \draw[-,blue] (b3) -- (h1);  
+
+  \end{pgfonlayer}
+
+\end{tikzpicture}
