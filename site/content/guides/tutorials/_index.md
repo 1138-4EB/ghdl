@@ -15,12 +15,13 @@ You can download an [example](http://ghdl.free.fr/site/uploads/Main/vpi-ex-ghdl.
 
 ## Asynchronous remote simulation using GHDL
 
-https://section5.ch/index.php/2011/09/26/asynchronous-remote-simulation-using-ghdl/
+- https://section5.ch/index.php/2011/09/26/asynchronous-remote-simulation-using-ghdl/
 
 ## GHDL interfaces and extensions
 
-http://ygdes.com/GHDL/
-https://www.fpgarelated.com/showarticle/20.php
+- http://ygdes.com/GHDL/
+- https://www.fpgarelated.com/showarticle/20.php
+- #603
 
 ## dossmatik
 
