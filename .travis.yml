@@ -49,8 +49,25 @@ jobs:
     # Optionally, more macos jobs can be added. See list of available versions at https://docs.travis-ci.com/user/reference/osx/#macos-version
 #   - <<: *osx
 #     osx_image: xcode10
-    - env: IMAGE=""
+    - env: IMAGE=man
       script: ./dist/travis/man.sh
       deploy:
         - <<: *deploy-docker
           file: "doc/_build/man/ghdl.1"
+    - env: IMAGE=doc
+      language: python
+      python: '3.6'
+      before_script:
+        - git fetch --unshallow --tags
+        - pip3 install -r doc/requirements.txt
+      script: python3 doc/build.py
+      after_success: ./doc/update_site.sh
+      deploy:
+        provider: pages
+        repo: 1138-4EB/ghdl
+        target_branch: gh-pages
+        local_dir: doc/_site
+        github_token: $GITHUB_PAGES_TOKEN
+        skip_cleanup: true
+        on:
+          all_branches: true
