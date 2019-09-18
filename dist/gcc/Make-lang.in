@@ -141,7 +141,9 @@ doc/ghdl.info: vhdl/ghdl.texi
 doc/ghdl.dvi: vhdl/ghdl.texi
 	$(TEXI2DVI) -o $@ $<
 
-vhdl.info: doc/ghdl.info
+#vhdl.info: doc/ghdl.info
+
+vhdl.info:
 
 vhdl.man:
 
@@ -165,16 +167,22 @@ vhdl.install-common: ghdl$(exeext) ghdl1$(exeext)
 	-mkdir $(DESTDIR)$(libdir)/ghdl
 	$(INSTALL_DATA) ../libbacktrace/.libs/libbacktrace.a $(DESTDIR)$(libdir)/ghdl
 
-install-info:: $(DESTDIR)$(infodir)/ghdl.info
+install-info::
 
-vhdl.install-info: $(DESTDIR)$(infodir)/ghdl.info
+vhdl.install-info:
 
-vhdl.install-man: $(DESTDIR)$(man1dir)/ghdl$(man1ext)
+vhdl.install-man:
 
-$(DESTDIR)$(man1dir)/ghdl$(man1ext): $(srcdir)/vhdl/ghdl.1
-	-rm -f $@
-	-$(INSTALL_DATA) $< $@
-	-chmod a-x $@
+#install-info:: $(DESTDIR)$(infodir)/ghdl.info
+#
+#vhdl.install-info: $(DESTDIR)$(infodir)/ghdl.info
+#
+#vhdl.install-man: $(DESTDIR)$(man1dir)/ghdl$(man1ext)
+#
+#$(DESTDIR)$(man1dir)/ghdl$(man1ext): $(srcdir)/vhdl/ghdl.1
+#	-rm -f $@
+#	-$(INSTALL_DATA) $< $@
+#	-chmod a-x $@
 
 vhdl.uninstall:
 	-$(RM) $(DESTDIR)$(bindir)/ghdl$(exeext)

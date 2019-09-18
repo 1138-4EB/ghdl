@@ -255,7 +255,6 @@ copy-sources.gcc: version.ads
 	esac; \
 	$(CP) -p $(srcdir)/src/ortho/gcc/$$gcc_ortho_lang \
 	  $(gcc_vhdl_dir)/ortho-lang.c
-	$(CP) -p $(srcdir)/doc/ghdl.texi $(srcdir)/doc/ghdl.1 $(gcc_vhdl_dir)
 	$(MKDIR) $(gcc_vhdl_dir)/ghdldrv
 	$(CP) -pR $(srcdir)/src/ghdldrv/*.ad? $(gcc_vhdl_dir)/ghdldrv
 	$(CP) -p $(srcdir)/dist/gcc/Make-lang.in $(gcc_vhdl_dir)
