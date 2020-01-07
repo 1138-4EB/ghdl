@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import sys, re
-from os.path import abspath, join
+from os.path import abspath, join, dirname, isfile
+from sys import path as syspath
+import json
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, abspath('.'))
+syspath.insert(0, abspath('.'))
+
+import build
 
 # -- General configuration ------------------------------------------------
 
-# If your documentation needs a minimal Sphinx version, state it here.
 needs_sphinx = '1.5'
 
 extensions = [
@@ -26,8 +28,6 @@ extensions = [
     # Other
     'exec',
 ]
-
-templates_path = ['_templates', '_themes']
 
 # The suffix(es) of source filenames.
 source_suffix = {
@@ -49,15 +49,12 @@ author = u'Tristan Gingold and contributors'
 # built documents.
 
 try:
-    with open('../configure') as verin:
-        for line in verin:
-            line = re.findall(r'ghdl_version=\"([0-9].+)\"', line)
-            if line:
-                version = line[0]
-                break
+    version = build.version()
 except Exception as e:
     print('cannot extract version: %s' % e)
-    version = "latest"
+    version = "master"
+    print('version', version)
+    exit(1)
     pass
 
 release = version  # The full version, including alpha/beta/rc tags.
@@ -70,10 +67,10 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['_site/*', 'COPYING_DOC.md']
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'stata-dark'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -91,21 +88,50 @@ except Exception as ex:
 
 # -- Options for HTML output ----------------------------------------------
 
-html_theme = "sphinx_rtd_theme"
+html_theme = "_theme"
 
-# Override default css to get a larger width for ReadTheDoc build
 html_context = {
-    'css_files': [
-        'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
-        'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
-        '_static/theme_overrides.css',
-    ],
+    'description': 'Open-source analyzer, compiler and simulator for VHDL',
+    'use_gfonts': True,
+    'display_github': True,
+    'slug_user': 'ghdl',
+    'slug_repo': 'ghdl',
+    'slug_path': '%s/doc/' % ('master' if version[-4:] == '-dev' else 'v'+ver)
 }
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+ctx = join(dirname(__file__), 'context.json')
+if isfile(ctx):
+    html_context.update(json.loads(open(ctx).read()))
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+html_theme_options = {
+    # 'style_nav_header_background': '#0c479dff',
+    'logo_only': True,
+    'home_breadcrumbs': False,
+    'prevnext_location': 'bottom',
+    'display_version': True,
+    'homepath': '/ghdl'
+}
+
+html_theme_path = ['.']
+
+# html_logo = None
+# html_favicon = None
+
 html_static_path = ['_static']
+
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+html_last_updated_fmt = '%b %d, %Y'
+
+# If true, links to the reST sources are added to the pages.
+# html_show_sourcelink = True
+# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
+# html_show_sphinx = True
+# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+# html_show_copyright = True
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'GHDLdoc'
@@ -147,6 +173,7 @@ intersphinx_mapping = {
 }
 
 # -- Sphinx.Ext.ExtLinks --------------------------------------------------
+
 extlinks = {
    'wikipedia': ('https://en.wikipedia.org/wiki/%s', None),
    'ghdlsharp': ('https://github.com/ghdl/ghdl/issues/%s', '#'),
