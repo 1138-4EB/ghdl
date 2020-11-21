@@ -160,6 +160,9 @@ c_compiler_is_available ()
 # Check if a feature is present
 ghdl_has_feature ()
 {
+  if [ "$2" = 'vpi' ]; then
+    c_compiler_is_available
+  fi
   "$GHDL" -r $GHDL_STD_FLAGS $GHDL_FLAGS $1 --has-feature=$2
 }
 

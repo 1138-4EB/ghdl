@@ -8,8 +8,11 @@ elab mytestbench
 simulate mytestbench --wave=dump.ghw | tee mytestbench.out
 
 if c_compiler_is_available; then
+  if [ -z $CC ]; then
+    CC="gcc"
+  fi
 
-  gcc ../../../src/grt/ghwdump.c ../../../src/grt/ghwlib.c -I../../../src/grt/ -o ghwdump
+  $CC ../../../src/grt/ghwdump.c ../../../src/grt/ghwlib.c -I../../../src/grt/ -o ghwdump
 
   # We're just checking that ghwdump doesn't crash on a zero length signal.
   ./ghwdump -ths dump.ghw > dump.txt
